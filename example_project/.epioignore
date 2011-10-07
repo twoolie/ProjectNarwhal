@@ -1,0 +1,7 @@
+/media
+/static
+*.pyc
+*.pyo
+*.db
+
+.gitignore

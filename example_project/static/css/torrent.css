@@ -1,0 +1,15 @@
+#search { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; }
+#search { *display: inline; }
+#search #search-box { background: #a58d78; padding: 3px 4px; display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; -moz-border-radius: 10px; -webkit-border-radius: 10px; -o-border-radius: 10px; -ms-border-radius: 10px; -khtml-border-radius: 10px; border-radius: 10px; }
+#search #search-box { *display: inline; }
+#search #search-box input { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; border-collapse: collapse; padding: 0 5px; margin: 0; }
+#search #search-box input { *display: inline; }
+#search #search-box input[type='search'] { float: left; border: 0; width: 600px; height: 30px; margin-top: 1px; font-size: 16px; -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4) inset; -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4) inset; -o-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4) inset; box-shadow: 0 0 4px rgba(0, 0, 0, 0.4) inset; -moz-border-radius: 8px 0 0 8px; -webkit-border-radius: 8px 0 0 8px; -o-border-radius: 8px 0 0 8px; -ms-border-radius: 8px 0 0 8px; -khtml-border-radius: 8px 0 0 8px; border-radius: 8px 0 0 8px; }
+#search #search-box input[type='submit'] { float: right; height: 32px; font-size: 16px; border: 1px solid grey; -moz-border-radius: 0 5px 5px 0; -webkit-border-radius: 0 5px 5px 0; -o-border-radius: 0 5px 5px 0; -ms-border-radius: 0 5px 5px 0; -khtml-border-radius: 0 5px 5px 0; border-radius: 0 5px 5px 0; }
+#search #pulldown { margin: 0 20px; }
+#search #pulldown #advanced { display: none; background-color: #aaaaaa; }
+#search #pulldown #tab { display: block; padding: 3px; font-size: 12px; text-align: center; text-decoration: none; background-color: #666666; -moz-border-radius: 0 0 10px 10px; -webkit-border-radius: 0 0 10px 10px; -o-border-radius: 0 0 10px 10px; -ms-border-radius: 0 0 10px 10px; -khtml-border-radius: 0 0 10px 10px; border-radius: 0 0 10px 10px; }
+#search #pulldown #tab, #search #pulldown #tab:visited { color: white; }
+#search #pulldown #tab:hover { background-color: #888888; }
+
+#torrent-list td.description { white-space: nowrap; overflow: hidden; -o-text-overflow: ellipsis; -ms-text-overflow: ellipsis; text-overflow: ellipsis; }

@@ -1,0 +1,112 @@
+/* Gobal styles for default theme */
+
+@import "settings"
+@import "compass"
+@import "compass/css3/gradient"
+@import "compass/css3/box-shadow"
+@import "compass/css3/inline-block"
+@import "compass/css3/border-radius"
+
+@import url(http://fonts.googleapis.com/css?family=Leckerli+One)
+@import url(http://fonts.googleapis.com/css?family=Sansita+One)
+
+html
+    font-family: sans-serif
+    padding: 0
+    min-height: 100%
+    background: url("#{$static_url}img/bg_middle.png")
+    background: url("#{$static_url}img/bg_top.png") repeat-x scroll top, url("#{$static_url}img/bg_bottom.png") repeat-x scroll bottom, url("#{$static_url}img/bg_middle.png") repeat scroll
+
+body
+    padding: 0 20px
+    margin: 0 auto
+    max-width: 1200px
+    min-width: 900px
+    min-height: 100px
+
+h1, h2, h3, h4, h5, h6
+    font-family: 'Sansita One', helvetica
+
+#header
+    display: block
+    padding: 0px 10px
+    height: 140px
+    margin-bottom: 30px
+    #branding
+        +inline-block
+        img
+            float: left
+        span
+            +inline-block
+            color: white
+            font-size: 60px
+            margin: 45px 0 0 20px
+            text-shadow: 0 0 2px #333, 0 3px 7px #333
+            font-family: 'Leckerli One', cursive
+
+    #usertools
+        color: white !important
+        +inline-block
+        float: right
+        right: 0
+        padding: 10px 5px
+        background-color: rgba(0,0,0,0.5)
+        +border-radius( 0 0 5px 5px )
+        +box-shadow( 0 2px 4px rgba(0,0,0,0.4) )
+        .avatar
+            float: left
+            margin:
+                top: -5px
+                right: 5px
+                bottom: -5px
+        a, a:visited
+            color: white
+        a:hover
+            color: #DDD
+
+#main_nav
+    float: right
+    margin:
+        right: 10px
+        top: -90px
+    border: 1px solid black
+    overflow: hidden
+    display: table
+    table-layout: fixed
+    +border-radius( 5px )
+    a
+        display: table-cell
+        padding: 5px
+        color: #222
+        text-decoration: none
+        &, &:visited
+            +linear-gradient(color-stops(#ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%))
+        &:hover
+            +linear-gradient(color-stops(#f6f6f6 0%, #e1e1e1 50%, #f1f1f1 51%, #ffffff 100%))
+        &:not(:first-child)
+            border-left: 1px solid #333
+        &:first-child
+            +border-radius( 5px 0 0 5px )
+        &:last-child
+            +border-radius( 0 5px 5px 0 )
+
+#content
+    padding-top: 0 20px
+    min-height: 500px
+
+#sidebar
+    float: right
+    width: 250px
+
+#footer
+    vertical-align: baseline
+    margin-top: 20px
+    width: 100%
+    max-width: none
+    text-align: center
+    .badges
+        padding: 0
+        margin: 0
+    .modules
+        font-size: 10px
+        color: lightgrey

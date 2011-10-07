@@ -1,0 +1,15 @@
+/* PROFILE RELATED CSS */
+img.avatar.small { overflow: hidden; border-width: 1px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; -moz-box-shadow: 0 1px 2px black; -webkit-box-shadow: 0 1px 2px black; -o-box-shadow: 0 1px 2px black; box-shadow: 0 1px 2px black; }
+img.avatar.small.online { border-color: #aaccaa #003300 #003300 #aaccaa; }
+img.avatar.small.idle { border-color: #ffaa55 #663322 #663322 #ffaa55; }
+img.avatar.small.idle { border-color: #ee0011 #663322 #663322 #440011; }
+
+img.avatar.medium { border: none; padding: 12px 15px 20px; margin: 4px; }
+img.avatar.medium.online { background-image: url("/static/img/profile/avatar-frame-online.png"); }
+img.avatar.medium.idle { background-image: url("/static/img/profile/avatar-frame-idle.png"); }
+img.avatar.medium.offline { background-image: url("/static/img/profile/avatar-frame-offline.png"); }
+
+img.avatar.large { padding: 10px; background: white; -moz-transform: rotate(1deg); -webkit-transform: rotate(1deg); -o-transform: rotate(1deg); -ms-transform: rotate(1deg); transform: rotate(1deg); -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7); -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7); -o-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7); }
+
+#profile-image { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; float: left; height: 100%; margin-right: 20px; }
+#profile-image { *display: inline; }

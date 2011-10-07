@@ -1,0 +1,43 @@
+@import settings
+
+@import "compass/css3/transform"
+@import "compass/css3/box-shadow"
+@import "compass/css3/inline-block"
+@import "compass/css3/border-radius"
+
+/* PROFILE RELATED CSS */
+
+img.avatar.small
+  overflow: hidden
+  border-width: 1px
+  +border-radius( 4px )
+  +box-shadow( 0 1px 2px opacify(black, 0.3) )
+  &.online
+    border-color: #ACA #030 #030 #ACA
+  &.idle
+    border-color: #FA5 #632 #632 #FA5
+  &.idle
+    border-color: #E01 #632 #632 #401
+
+img.avatar.medium
+  border: none
+  padding: 12px 15px 20px
+  margin: 4px
+  &.online
+    background-image: url("#{$static_url}img/profile/avatar-frame-online.png")
+  &.idle
+    background-image: url("#{$static_url}img/profile/avatar-frame-idle.png")
+  &.offline
+    background-image: url("#{$static_url}img/profile/avatar-frame-offline.png")
+
+img.avatar.large
+  padding: 10px
+  background: white
+  +rotate(1deg)
+  +box-shadow( 0 5px 10px rgba(0,0,0,0.7) )
+
+#profile-image
+  +inline-block
+  float: left
+  height: 100%
+  margin-right: 20px

@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {{settings.SITE_NAME}} {% trans 'admin' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">{{settings.SITE_NAME}} {% if settings.SITE_NAME %}{{set_test}}{%endif%}{% trans 'Administration' %}</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

@@ -1,0 +1,13 @@
+/.settings
+/Include
+/inc
+/Lib
+/lib
+/Scripts
+/bin
+/.project
+/.pydevproject
+.sass-cache
+*.pyc
+*.pyo
+*.db

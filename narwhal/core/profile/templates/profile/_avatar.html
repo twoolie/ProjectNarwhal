@@ -1,0 +1,18 @@
+{% load thumbnail profile %}
+{% if user.profile.avatar %}
+  {% thumbnail user.profile.avatar pxsize crop="top" format="PNG" as avatar %}
+    <img class="avatar {{size}} {{user|active:'state'}}" data-user="{{user.username}}" src="{{avatar.url}}" width="{{pxsize}}" height="{{pxsize}}"/>
+  {%endthumbnail%}
+{% else %}
+  {% with gravatar=user.profile.gravatar %}
+  {% if settings.PROFILE_AVATAR_PROTECT %}
+    {% thumbnail gravatar pxsize format="PNG" as avatar %}
+      <img class="avatar {{size}} {{user|active:'state'}}" data-user="{{user.username}}" src="{{avatar.url}}" width="{{pxsize}}" height="{{pxsize}}" />
+    {% empty %}
+      <img class="avatar {{size}} {{user|active:'state'}}" data-user="{{user.username}}" src="{{STATIC_URL}}img/blank-avatar-{{pxsize}}.png" width="{{pxsize}}" height="{{pxsize}}" />
+    {% endthumbnail %}
+  {% else %}
+    <img class="avatar {{size}} {{user|active:'state'}}" data-user="{{user.username}}" src="{{gravatar}}?s={{pxsize}}" width="{{pxsize}}" height="{{pxsize}}" />
+  {% endif %}
+  {%endwith%}
+{%endif%}

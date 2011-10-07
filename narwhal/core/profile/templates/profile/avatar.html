@@ -1,0 +1,8 @@
+{% load cache profile%}{% cache 10 user size %}{% spaceless %}
+{# this template snippet takes a param called user and a param called size #}
+<a href="{{user|profilelink}}">
+{% if size == "small" %}{% with pxsize=settings.PROFILE_AVATAR_SIZE_SMALL %}{% include "profile/_avatar.html" %}{%endwith%}{%endif%}
+{% if size == "medium" %}{% with pxsize=settings.PROFILE_AVATAR_SIZE_MEDIUM %}{% include "profile/_avatar.html" %}{%endwith%}{%endif%}
+{% if size == "large" %}{% with pxsize=settings.PROFILE_AVATAR_SIZE_LARGE %}{% include "profile/_avatar.html" %}{%endwith%}{%endif%}
+</a>
+{%endspaceless%}{%endcache%}

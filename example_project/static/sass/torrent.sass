@@ -1,0 +1,57 @@
+@import settings
+
+@import "compass"
+@import "compass/css3/box-shadow"
+@import "compass/css3/inline-block"
+@import "compass/css3/border-radius"
+@import "compass/typography/text/ellipsis"
+
+#search
+	+inline-block
+	#search-box
+		background: #A58D78
+		padding: 3px 4px
+		+inline-block
+		+border-radius( 10px )
+		input
+			+inline-block
+			border-collapse: collapse
+			padding: 0 5px
+			margin: 0
+		input[type='search']
+			float: left
+			border: 0
+			width: 600px
+			height: 30px
+			margin-top: 1px
+			font-size: 16px
+			+box-shadow( 0 0 4px rgba(0,0,0,0.4) inset)
+			+border-radius( 8px 0 0 8px )
+		input[type='submit']
+			float: right
+			height: 32px
+			font-size: 16px
+			border: 1px solid grey
+			+border-radius( 0 5px 5px 0 )
+
+	
+	#pulldown
+		margin: 0 20px
+		#advanced
+			display: none
+			background-color: #AAA
+		#tab
+			display: block
+			padding: 3px
+			font-size: 12px
+			text-align: center
+			text-decoration: none
+			background-color: #666
+			+border-radius( 0 0 10px 10px)
+			&, &:visited
+				color: white
+			&:hover
+				background-color: #888
+
+#torrent-list td.description
+	+ellipsis

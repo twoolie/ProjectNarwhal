@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{user.username}}{{block.super}}{%endblock%}
+
+{% block content %}
+  <div id="profile-image">{% include "profile/avatar.html" with size="large" %}</div>
+  <h1> {{user.username}} </h1>
+  
+  {% if not user.profile.data %}<p> No plugins have contributed data on this user </p>{% endif %}
+  
+  {% for infogroup in user.profile.data %}
+  <table>
+    <caption> infogroup </caption>
+    {%for datapoint in infogroup.items %}
+    <tr><td>{{ datapoint.0 }}</td><td>{{ datapoint.1|default:"" }}</td></tr>
+    {% endfor %}
+  </table>
+  {% endfor %}
+{% endblock content %}
