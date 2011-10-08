@@ -21,9 +21,9 @@ def bytes(bytes):
 @register.filter()
 def magnet(torrent, user=None):
     if isinstance(torrent, Torrent):
-        data = {'xt':"urn:sha1:"+ torrent.info_hash, 'dn': torrent.title,}
-        if user and 'narwhal.core.tracker' in settings.INSTALLED_APPS:
-            data.update({'tr': "%s?key=%s"% ( reverse('tracker:announce'), user.get_profile().key) })
+        data = {'xt':"urn:btih:"+ torrent.info_hash, 'dn': torrent.title, }
+        if user and user.is_authenticated() and 'narwhal.core.tracker' in settings.INSTALLED_APPS:
+            data.update(tr = "%s?key=%s"% ( reverse('tracker:announce'), user.get_profile().key) )
         return "magnet:?"+urllib.urlencode(data)
     else:
         return ""
