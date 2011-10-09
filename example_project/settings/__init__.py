@@ -1,11 +1,13 @@
-import sys, os, platform
+import os, platform
 
 if 'EPIO' in os.environ.keys():
-    import epio
+    from epio import *
 else:
-    import local
-#else:
-#    try:
-#        __import__(platform.node().split(".")[0].lower())
-#    except:
-#        pass
+    from local import *
+
+#try to grab host specific configs
+try:
+    host_settings = __import__(platform.node().split(".")[0].lower())
+    locals().update(host_settings.__dict__)
+except ImportError:
+    pass
