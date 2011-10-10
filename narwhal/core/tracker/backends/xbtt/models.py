@@ -1,8 +1,8 @@
 import time, datetime
-from gettext import gettext as _
 
 # Django
 from django.db.models import *
+from django.utils.translation import ugettext_lazy as _
 
 # Modules
 from fields import DateTimeStampField, FlagField #compat fields

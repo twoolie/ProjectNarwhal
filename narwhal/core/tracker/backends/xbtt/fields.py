@@ -1,11 +1,13 @@
 import time, datetime
-from gettext import gettext as _
 
 from django.db.models.fields import DateTimeField, PositiveIntegerField
+from django.utils.translation import ugettext_lazy as _
 from django.forms.fields import MultipleChoiceField
 from django.forms.widgets import CheckboxSelectMultiple
-from django.core.exceptions import ImproperlyConfigured
+from django.core import validators
+from django.core.exceptions import ImproperlyConfigured, ValidationError
 from django.utils.text import capfirst
+from django.utils.functional import curry
 
 __all__ = ('DateTimeStampField', 'FlagField', 'CheckboxFlagField')
 
@@ -37,56 +39,61 @@ class DateTimeStampField(DateTimeField, PositiveIntegerField):
                 raise TypeError("expected a datetime.datetime, got a "+type(value))
 
 # DEPRICATED_FIELD, STILL HANDY
+# needs work
 class FlagField(PositiveIntegerField):
     description = _('Flags')
-    
+
     def __init__(self, *args, **kwargs):
         if not kwargs.get('choices'):
             raise ImproperlyConfigured('FlagField must have choices set.')
         super(FlagField,self).__init__(*args, **kwargs)
         self.error_messages = self.error_messages.copy()
         self.error_messages['invalid_choice'] = _("One of the values applied is not in the list of available choices.")
-    @class_method
-    def get_for_display(cls, field, value):
-        flags = (choice for choice in self.choices if field.value)
-    
+
+    def _flat_choices(self):
+        for option_key, option_value in self.choices:
+            if isinstance(option_value, (list, tuple)):
+                # This is an optgroup, so look inside the group for options.
+                for optgroup_key, optgroup_value in option_value:
+                    yield optgroup_key, optgroup_value
+            else:
+                yield option_key, option_value
+
     def contribute_to_class(self, cls, name):
         self.set_attributes_from_name(name)
         self.model = cls
         cls._meta.add_field(self)
         setattr(cls, 'get_%s_display' % self.name, curry(self.get_for_display, field=self))
-    
-    def validate(self):
+
+    @classmethod
+    def get_for_display(cls, field, value):
+        return "|".join(value for key, value in field._flat_choices())
+
+    def validate(self, value, model_instance):
         if not self.editable:
             # Skip validation for non-editable fields.
+            return
         
         if self._choices and value:
             #build a master mask of all valid choices
-            mask_all = 0
-            for option_key, option_value in self.choices:
-                if isinstance(option_value, (list, tuple)):
-                    # This is an optgroup, so look inside the group for options.
-                    for optgroup_key, optgroup_value in option_value:
-                        mask_all |= optgroup_key
-                else:
-                    mask_all | = option_key
+            mask = reduce(lambda a,b: a|b, (key for key, value in self._flat_choices()))
             # is true when flag value not in choices
-            if mask_all^(value|mask_all) 
-                raise exceptions.ValidationError(self.error_messages['invalid_choice'])
-        
+            if mask^(value|mask):
+                raise ValidationError(self.error_messages['invalid_choice'])
+            
         if value is None and not self.null:
-            raise exceptions.ValidationError(self.error_messages['null'])
-
+            raise ValidationError(self.error_messages['null'])
+        
         if not self.blank and value in validators.EMPTY_VALUES:
-            raise exceptions.ValidationError(self.error_messages['blank'])
-    
+            raise ValidationError(self.error_messages['blank'])
+
     def formfield(self):
-        return forms.CheckboxFlagField(label = capfirst(self.verbose_name),
-                                       required = False,
-                                       choices = self.choices,
-                                       widget = forms.CheckboxSelectMultiple,
-                                       initial = self.default,
-                                       help_text = self.help_text)
+        return CheckboxFlagField(label = capfirst(self.verbose_name),
+                                 required = False,
+                                 choices = self.choices,
+                                 widget = CheckboxSelectMultiple,
+                                 initial = self.default,
+                                 help_text = self.help_text)
 
 class CheckboxFlagField(MultipleChoiceField):
     def to_python(self, value):

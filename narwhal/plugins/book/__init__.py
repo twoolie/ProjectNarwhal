@@ -12,9 +12,9 @@ from narwhal.core.torrent.models import Category
 
 @receiver(post_syncdb, sender=Category)
 def category_creator(**kwargs):    
-    category, created = Category.objects.get_or_create(title=_('Videos'))
+    category, created = Category.objects.get_or_create(title='Books')
     if created:
-        image = File(find(path='img/icons/film.png'))
+        image = File(find(path='img/icons/book.png'))
         category.image = FieldFile(image)
         category.plugin = __name__ # inserts the name of this module as the controller for this category
     
