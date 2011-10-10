@@ -9,8 +9,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 from narwhal.core.torrent.models import Torrent
 
-from djboss.commands import *
-
+#from djboss.commands import *
 #@command(description='Run an ircbot that responds to commands in chat.')
 #@argument('host', help='The server to connect to.')
 #@argument('port', type=int, default=6667, help="Port irc runs on (default:%(default)s)")

@@ -18,7 +18,6 @@ def category_creator(**kwargs):
     category, created = Category.objects.get_or_create(title=conf.CATEGORY_NAME)
     if created:
         category.parent = video.category_creator()
-        image = File(find(path='img/icons/anime.png'))
-        category.image = FieldFile(image)
+        category.plugin = __name__
     
     return category

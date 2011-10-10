@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="request.LANGUAGE_CODE">"
+	<head>
+		<title> You have been Banned </title>
+		<link rel="stylesheet" href="{{STATIC_URL}}css/ban.css" type="text/css" />
+	</head>
+	<body>
+		<div class="banmessage">
+			<h1> You have been Banned </h1>
+			<p class="reason"> {{ ban.reason }} <p>
+			{% if ban.end %}
+			<p class="dates"> Ban is effective until {{ ban.end|date:"P l jS M Y" }}. </p>
+			{% else %}
+			<p class="dates"> Ban is indefinite </p>
+			{% if settings.BAN_ALLOW APPEALS %}
+				<a class='button appeal' href="{% url appeal-ban %}"> Appeal Ban </a>
+			{% endif %}
+		</div>
+	</body>
+</html>

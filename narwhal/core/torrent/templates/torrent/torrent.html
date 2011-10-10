@@ -1,0 +1,26 @@
+{%extends "torrent.search.html" %}
+
+{% block title %} {{torrent.title}} | {{torrent.category.title}} | {{block.super}} {% endblock %}
+
+{% block search %}
+<form id="search" action="." method="GET">
+  <div id="search-box">
+    <input type="search" name="q" value="{{request.GET.q}}" placeholder="Search {{settings.SITE_NAME}}" autocomplete="off"><input type="submit" value="Search">
+  </div>
+  <div id="pulldown">
+    <div id="advanced">
+      {{form.as_p}}
+    </div>
+    <a id="tab" href="javascript:(function() {$('#advanced').toggle(); return})()"> Advanced Search </a>
+  </div>
+</form>
+{% endblock search %}
+
+{% block content-class %}torrent-page {% block torrent-type %}{% endblock%}{% endblock %}
+
+{% block content %}
+<h1> {{torrent.title}} </h1>
+
+<h2> Torrent Info </h2>
+
+{% endblock content %}
