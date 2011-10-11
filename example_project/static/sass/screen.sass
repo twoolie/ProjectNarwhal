@@ -14,8 +14,9 @@ html
 	font-family: sans-serif
 	padding: 0
 	min-height: 100%
-	background: url("#{$static_url}img/bg_middle.png")
-	background: url("#{$static_url}img/bg_top.png") repeat-x scroll top, url("#{$static_url}img/bg_bottom.png") repeat-x scroll bottom, url("#{$static_url}img/bg_middle.png") repeat scroll
+	/* in case browser does not understand multi-backgound *cough* IE *cough*
+	background: url("#{$static-url}img/bg.png") 
+	background: url("#{$static-url}img/bg_top.png") repeat-x scroll top, url("#{$static-url}img/bg.png") repeat scroll
 
 body
 	padding: 0 20px
@@ -26,6 +27,8 @@ body
 
 h1, h2, h3, h4, h5, h6
 	font-family: 'Sansita One', helvetica
+h1
+	border-bottom: 1px solid darkgrey
 
 #header
 	display: block
@@ -83,6 +86,7 @@ h1, h2, h3, h4, h5, h6
 			+linear-gradient(color-stops(#ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%))
 		&:hover
 			+linear-gradient(color-stops(#f6f6f6 0%, #e1e1e1 50%, #f1f1f1 51%, #ffffff 100%))
+			+box-shadow(0 0 6px darkgrey inset)
 		&:not(:first-child)
 			border-left: 1px solid #333
 		&:first-child
@@ -92,13 +96,15 @@ h1, h2, h3, h4, h5, h6
 
 #content
 	padding-top: 0 20px
-	min-height: 500px
+	min-height: $min-content-height
+	margin-right: $sidebar-width+10px
 
 #sidebar
 	float: right
-	width: 250px
+	width: $sidebar-width
 
 #footer
+	border-top: 1px solid white
 	vertical-align: baseline
 	margin-top: 20px
 	width: 100%
@@ -107,6 +113,7 @@ h1, h2, h3, h4, h5, h6
 	.badges
 		padding: 0
 		margin: 0
+		border: 0
 	.modules
 		font-size: 10px
-		color: lightgrey
+		color: darkgrey

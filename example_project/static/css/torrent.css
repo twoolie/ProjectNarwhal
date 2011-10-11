@@ -1,3 +1,6 @@
+a.torrent.magnet { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; background: url("/static/img/torrent/magnet-icon.png") 0 center no-repeat; }
+a.torrent.magnet { *display: inline; }
+
 #search { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; }
 #search { *display: inline; }
 #search #search-box { background: #a58d78; padding: 3px 4px; display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; -moz-border-radius: 10px; -webkit-border-radius: 10px; -o-border-radius: 10px; -ms-border-radius: 10px; -khtml-border-radius: 10px; border-radius: 10px; }
@@ -13,6 +16,3 @@
 #search #pulldown #tab:hover { background-color: #888888; }
 
 #torrent-list td.description { white-space: nowrap; overflow: hidden; -o-text-overflow: ellipsis; -ms-text-overflow: ellipsis; text-overflow: ellipsis; }
-
-a.torrent.magnet { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; background: url("/static/img/torrent/magnet-icon.png") 0 center no-repeat; }
-a.torrent.magnet { *display: inline; }

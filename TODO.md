@@ -3,10 +3,10 @@
  TODO
 ======
 
- * [STARTED -tw] get solr search running
+ * [IN PROGRESS -tw] get solr search running
  * [NEW] Facet Search resuls. <http://docs.haystacksearch.org/dev/faceting.html#what-is-faceting>
  * [NEW] Integrate django-notification <= django-mailer
- * [STARTED -tw] create core API for annotating onto torrent/profile models
+ * [IN PROGRESS -tw] create core API for annotating onto torrent/profile models
    * profiles already started: avatar framwork & online tracking implemented.
  * [STARTED -tw] XBTT support
    * tables just need flag choices set.

@@ -30,7 +30,7 @@ STATIC_ROOT = PROJECT_ROOT / 'static-root' # FS path for static content. must be
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    str(PROJECT_ROOT / 'static'),
+    PROJECT_ROOT / 'static',
 )
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
@@ -110,6 +110,7 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.comments',
     
     #libs
     'annoying',
@@ -122,9 +123,19 @@ INSTALLED_APPS = (
     #apps
     'sentry',
     'messages',
+    
+    #narwhal core
     'narwhal.core.torrent',
     'narwhal.core.tracker',
     'narwhal.core.profile',
+    
+    #narwhal plugins
+    'narwhal.plugins.irc.bot',
+    'narwhal.plugins.book',
+    'narwhal.plugins.video',
+    'narwhal.plugins.video.tv',
+    'narwhal.plugins.video.movie',
+    'narwhal.plugins.video.anime',
     
     #djangobb_forum
 )
