@@ -34,5 +34,5 @@ h1 { border-bottom: 1px solid darkgrey; }
 #sidebar { float: right; width: 250px; }
 
 #footer { border-top: 1px solid white; vertical-align: baseline; margin-top: 20px; width: 100%; max-width: none; text-align: center; }
-#footer .badges { padding: 0; margin: 0; border: 0; }
-#footer .modules { font-size: 10px; color: darkgrey; }
+#footer p { font-size: 10px; color: darkgrey !important; margin: 3px 0; }
+#footer img.badges { padding: 0; margin: 0 5px; border: 0; }
