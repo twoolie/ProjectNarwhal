@@ -3,9 +3,22 @@
 
 {%block title%} Home {%endblock%}
 
-{%block content%}
+{% block header %}
+<header id="header" class="jumbotron">
+      <div id="branding">
+        <img src="{{STATIC_URL}}img/logo.png">
+        <span>{{settings.SITE_NAME}}</span>
+        <p> The Open Souce Torrent Tracker </p>
+      </div>
+</header>
+{% endblock %}
 
-  <h1> Welcome to ProjectNarwhal, the open source torrent tracker. </h1>
+{% block sidebar %}
+
+{% block content-class %}home{% endblock %}
+{% block content %}
+
+  <h1> Welcome to ProjectNarwhal <small>the open source torrent tracker.</small> </h1>
   
   <p> This is the home page and lives at <code>example_project/templates/home.html</code>
       All templates provided by project narwhal can be overridded by placing suitably named
@@ -17,7 +30,7 @@
       place any host-specific settings in <code>settings/[hostname].py</code>.
       And don't forget to change <code>SITE_NAME</code> to the name of your site.</p>
 
-{% cache 30 latest-torrents LANGUAGE_CODE%} {#vary cache on language code #}
+{% cache 30 latest-torrents LANGUAGE_CODE %} {#vary cache on language code #}
   <h1> Latest Torrents </h1>
   {% include "torrent/table.html" with table=latest_table request=request only %}
 {% endcache %}

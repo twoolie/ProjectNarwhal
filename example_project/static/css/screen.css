@@ -1,24 +1,22 @@
 /* Gobal styles for default theme */
 @import url("http://fonts.googleapis.com/css?family=Leckerli+One");
 @import url("http://fonts.googleapis.com/css?family=Sansita+One");
-html { /*font-family: sans-serif padding: 0 min-height: 100% */* in case browser does not understand multi-backgound *cough* IE *cough* */ background: url("/static/img/bg.png"); background: url("/static/img/bg_top.png") repeat-x scroll top, url("/static/img/bg.png") repeat scroll; }
+html { /*font-family: sans-serif padding: 0 min-height: 100% */* in case browser does not understand multi-backgound *cough* IE *cough* */ /*background: url("#{$static-url}img/bg.png") */ /*background: url("#{$static-url}img/bg_top.png") repeat-x scroll top, url("#{$static-url}img/bg.png") repeat scroll */ }
 
-body { padding: 0 20px; margin: 0 auto; background-color: nonr; max-width: 1200px; min-width: 900px; }
+body { margin-top: 40px; width: 100%; }
 
+body > .container, body > .container-fluid { padding: 0 20px; }
+
+/*		margin: 0 auto background-color: transparent max-width: 1200px */
 /*	min-height: 100px */
 h1, h2, h3, h4, h5, h6 { font-family: "Sansita One", helvetica; }
 
 h1 { border-bottom: 1px solid darkgrey; }
 
+.hidden { display: none; }
+
 .topbar .brand { font-family: "Leckerli One"; }
 .topbar .brand img { margin: -15px 10px -15px 0; }
-
-header.jumbotron { display: block; padding: 0px 10px; height: 140px; margin-top: 40px; margin-bottom: 30px; }
-header.jumbotron #branding { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; }
-header.jumbotron #branding { *display: inline; }
-header.jumbotron #branding img { float: left; }
-header.jumbotron #branding span { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; color: white; font-size: 60px; margin: 45px 0 0 20px; text-shadow: 0 0 2px #333333, 0 3px 7px #333333; font-family: "Leckerli One", cursive; }
-header.jumbotron #branding span { *display: inline; }
 
 #usertools { color: white !important; display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; float: right; right: 0; padding: 10px 5px; }
 #usertools { *display: inline; }
@@ -26,18 +24,21 @@ header.jumbotron #branding span { *display: inline; }
 #usertools a, #usertools a:visited { color: white; }
 #usertools a:hover { color: #dddddd; }
 
-#main_nav { float: right; margin-right: 10px; margin-top: -90px; border: 1px solid black; overflow: hidden; display: table; table-layout: fixed; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
-#main_nav a { display: table-cell; padding: 5px; color: #222222; text-decoration: none; }
-#main_nav a, #main_nav a:visited { background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(50%, #f1f1f1), color-stop(51%, #e1e1e1), color-stop(100%, #f6f6f6)); background-image: -webkit-linear-gradient(top, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%); background-image: -moz-linear-gradient(top, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%); background-image: -o-linear-gradient(top, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%); background-image: -ms-linear-gradient(top, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%); background-image: linear-gradient(top, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%); }
-#main_nav a:hover { background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f6f6f6), color-stop(50%, #e1e1e1), color-stop(51%, #f1f1f1), color-stop(100%, #ffffff)); background-image: -webkit-linear-gradient(top, #f6f6f6 0%, #e1e1e1 50%, #f1f1f1 51%, #ffffff 100%); background-image: -moz-linear-gradient(top, #f6f6f6 0%, #e1e1e1 50%, #f1f1f1 51%, #ffffff 100%); background-image: -o-linear-gradient(top, #f6f6f6 0%, #e1e1e1 50%, #f1f1f1 51%, #ffffff 100%); background-image: -ms-linear-gradient(top, #f6f6f6 0%, #e1e1e1 50%, #f1f1f1 51%, #ffffff 100%); background-image: linear-gradient(top, #f6f6f6 0%, #e1e1e1 50%, #f1f1f1 51%, #ffffff 100%); -moz-box-shadow: 0 0 6px darkgrey inset; -webkit-box-shadow: 0 0 6px darkgrey inset; -o-box-shadow: 0 0 6px darkgrey inset; box-shadow: 0 0 6px darkgrey inset; }
-#main_nav a:not(:first-child) { border-left: 1px solid #333333; }
-#main_nav a:first-child { -moz-border-radius: 5px 0 0 5px; -webkit-border-radius: 5px 0 0 5px; -o-border-radius: 5px 0 0 5px; -ms-border-radius: 5px 0 0 5px; -khtml-border-radius: 5px 0 0 5px; border-radius: 5px 0 0 5px; }
-#main_nav a:last-child { -moz-border-radius: 0 5px 5px 0; -webkit-border-radius: 0 5px 5px 0; -o-border-radius: 0 5px 5px 0; -ms-border-radius: 0 5px 5px 0; -khtml-border-radius: 0 5px 5px 0; border-radius: 0 5px 5px 0; }
+header.jumbotron { display: block; padding: 0px 10px; height: 140px; width: 100%; max-width: none; margin: 0; margin-bottom: 30px; text-align: center; background: url("/static/img/bg.png"); border-bottom: 1px solid grey; }
+header.jumbotron #branding { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; }
+header.jumbotron #branding { *display: inline; }
+header.jumbotron #branding img { float: left; }
+header.jumbotron #branding span { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; color: white; font-size: 60px; margin: 45px 0 0 20px; text-shadow: 0 0 2px #333333, 0 3px 7px #333333; font-family: "Leckerli One", cursive; }
+header.jumbotron #branding span { *display: inline; }
+header.jumbotron #branding p { margin-top: 20px; color: #333333; text-shadow: 0 1px 0px #eeeeee; }
 
-#content { padding-top: 0 20px; min-height: 500px; margin-right: 260px; }
+#content-container { padding: 20px; min-height: 500px; }
+#content-container .content { margin-left: 270px; }
 
-#sidebar { float: right; width: 250px; }
+.hidden + .content { margin-left: 0px !important; }
 
+/*#sidebar */
+/*	float: right */
 #footer { border-top: 1px solid white; vertical-align: baseline; margin-top: 20px; width: 100%; max-width: none; text-align: center; }
 #footer p { font-size: 10px; color: darkgrey !important; margin: 3px 0; }
 #footer img.badges { padding: 0; margin: 0 5px; border: 0; }

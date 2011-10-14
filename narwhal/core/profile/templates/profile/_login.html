@@ -1,7 +1,13 @@
+{% load i18n%}
 
-<form action="{% url login %}" action="POST" >
+<form action="{% url login %}" method="POST" class="login">{%csrf_token%}
 	<fieldset>
-		<legend> Login </legend>
-		{{ login_form }}
+		<legend> Login to {{settings.SITE_NAME}} </legend>
+		{{form.non_field_errors }}
+		{{ form }}
 	</fieldset>
+	<div class="actions">
+		<input type="submit" class="btn primary" value="{% trans "Login" %}">
+		<button type="reset" class="btn">{%trans "Cancel" %}</button>
+	</div>
 </form>

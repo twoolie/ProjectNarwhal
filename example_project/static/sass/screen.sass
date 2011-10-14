@@ -4,6 +4,7 @@
 @import "compass"
 @import "compass/css3/gradient"
 @import "compass/css3/box-shadow"
+@import "compass/css3/text-shadow"
 @import "compass/css3/inline-block"
 @import "compass/css3/border-radius"
 
@@ -15,15 +16,18 @@ html
 	 *padding: 0
 	 *min-height: 100%
 	 */* in case browser does not understand multi-backgound *cough* IE *cough*
-	background: url("#{$static-url}img/bg.png") 
-	background: url("#{$static-url}img/bg_top.png") repeat-x scroll top, url("#{$static-url}img/bg.png") repeat scroll
+	/*background: url("#{$static-url}img/bg.png") 
+	/*background: url("#{$static-url}img/bg_top.png") repeat-x scroll top, url("#{$static-url}img/bg.png") repeat scroll
 
 body
-	padding: 0 20px
-	margin: 0 auto
-	background-color: nonr
-	max-width: 1200px
-	min-width: 900px
+	margin-top: 40px
+	width: 100%
+body 
+	& > .container, & > .container-fluid
+		padding: 0 20px
+/*		margin: 0 auto
+		background-color: transparent
+		max-width: 1200px
 /*	min-height: 100px
 
 h1, h2, h3, h4, h5, h6
@@ -31,28 +35,13 @@ h1, h2, h3, h4, h5, h6
 h1
 	border-bottom: 1px solid darkgrey
 
+.hidden
+	display: none
+
 .topbar .brand
 	font-family: "Leckerli One"
 	img
 		margin: -15px  10px -15px 0
-
-header.jumbotron
-	display: block
-	padding: 0px 10px
-	height: 140px
-	margin-top: 40px
-	margin-bottom: 30px
-	#branding
-		+inline-block
-		img
-			float: left
-		span
-			+inline-block
-			color: white
-			font-size: 60px
-			margin: 45px 0 0 20px
-			text-shadow: 0 0 2px #333, 0 3px 7px #333
-			font-family: 'Leckerli One', cursive
 
 #usertools
 	color: white !important
@@ -71,41 +60,45 @@ header.jumbotron
 	a:hover
 		color: #DDD
 
-#main_nav
-	float: right
-	margin:
-		right: 10px
-		top: -90px
-	border: 1px solid black
-	overflow: hidden
-	display: table
-	table-layout: fixed
-	+border-radius( 5px )
-	a
-		display: table-cell
-		padding: 5px
-		color: #222
-		text-decoration: none
-		&, &:visited
-			+linear-gradient(color-stops(#ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%))
-		&:hover
-			+linear-gradient(color-stops(#f6f6f6 0%, #e1e1e1 50%, #f1f1f1 51%, #ffffff 100%))
-			+box-shadow(0 0 6px darkgrey inset)
-		&:not(:first-child)
-			border-left: 1px solid #333
-		&:first-child
-			+border-radius( 5px 0 0 5px )
-		&:last-child
-			+border-radius( 0 5px 5px 0 )
+header.jumbotron
+	display: block
+	padding: 0px 10px
+	height: 140px
+	width: 100%
+	max-width: none
+	margin: 0
+		bottom: 30px
+	text-align: center
+	background: url("#{$static-url}img/bg.png")
+	border-bottom: 1px solid grey
+	#branding
+		+inline-block
+		img
+			float: left
+		span
+			+inline-block
+			color: white
+			font-size: 60px
+			margin: 45px 0 0 20px
+			+text-shadow( 0 0 2px #333, 0 3px 7px #333)
+			font-family: 'Leckerli One', cursive
+		p
+			margin-top: 20px
+			color: #333
+			+text-shadow( 0 1px 0px #EEE )
 
-#content
-	padding-top: 0 20px
-	min-height: $min-content-height
-	margin-right: $sidebar-width+10px
+#content-container
+	padding: 20px
+	min-height: 500px
+	.content
+		margin-left: 270px
 
-#sidebar
-	float: right
-	width: $sidebar-width
+.hidden + .content
+	margin-left: 0px !important
+	
+
+/*#sidebar
+/*	float: right
 
 #footer
 	border-top: 1px solid white

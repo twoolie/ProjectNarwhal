@@ -33,10 +33,10 @@
           <div id="usertools" class="pull-right">
             {% if request.user.is_authenticated %}
               {% include "profile/avatar.html" with user=request.user size="small" %}
-              <a href="{{ request.user.get_absolute_url }}" class="username">{{ request.user.username }}</a> |
-              <a href="{% url messages_inbox %}" class="messgaes unread">{% inbox_count %}</a>
-              {% if user.is_staff %}| <a href="/admin/">Administration</a>{% endif %}
-              {% url logout %}
+              <a href="{% url profile:profile %}" class="username">{{ request.user.username }}</a> |
+              <a href="{% url messages_inbox %}" class="messgaes unread">{% inbox_count %} Unread</a>
+              {% if user.is_staff %}| <a href="/admin/">Administration</a>{% endif %} |
+              <a href="{% url logout %}">logout</a>
             {% else %}
               <a href="{% url login %}">login</a>
             {% endif %}
@@ -44,24 +44,22 @@
         </div>
       </div>
     </div>
-    <header id="header" class="jumbotron">
-      <div id="branding">
-        <img src="{{STATIC_URL}}img/logo-large.png">
-        <span>{{settings.SITE_NAME}}</span>
-      </div>
-    </header>
+    {% block header %}
+    
+    {% endblock header%}
     {% block pre-content %}{% endblock %}
-    <aside id="sidebar">
-      {% block sidebar %}{%endblock%}
-    </aside>
-    <section id="content" class="{%block content-class%}{%endblock%}">
-      {% block content %}{%endblock%}
-    </section>
+    <div id="content-container" class="container-fluid">
+        <aside id="sidebar" class="sidebar well {%block sidebar-class%}{%endblock%}">
+          {% block sidebar %}{%endblock%}
+        </aside>
+        <section id="content" class="content {%block content-class%}{%endblock%}">
+          {% block content %}{%endblock%}
+        </section>
+    </div>
     {% block post-content %}{% endblock %}
     <div id="footer">
       <p class='badges'><img src="http://media.djangopony.com/img/small/badge.png"></p>
-      <p class='modules'>Built using Django=={{versions.django}} | ProjectNarwhal=={{versions.narwhal}} | Django-piston=={{versions.piston}}</p>
-      <p><a href="http://www.axialis.com/free/icons">Icons</a> by <a href="http://www.axialis.com">Axialis Team</a></p>
+      <p class='modules'>Built using Django=={{versions.django}} | ProjectNarwhal=={{versions.narwhal}}, <a href="http://www.axialis.com/free/icons">Icons</a> by <a href="http://www.axialis.com">Axialis Team</a></p>
     </div>{% endblock body %}
   </body>
 </html>

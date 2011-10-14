@@ -17,7 +17,7 @@ handler500 = lambda request: HttpResponseServerError(loader.get_template('500.ht
 
 urlpatterns = patterns('', 
         url(r'^login', 'django.contrib.auth.views.login', {'template_name':'login.html', 'authentication_form': LoginForm}, name='login'),
-        url(r'^logout', 'django.contrib.auth.views.logout', {'template':'logout.html'}, name='logout'),
+        url(r'^logout', 'django.contrib.auth.views.logout', {'template_name':'logout.html'}, name='logout'),
         
         url(r'^admin/', include(admin.site.urls)),
         

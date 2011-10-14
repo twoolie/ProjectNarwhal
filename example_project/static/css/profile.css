@@ -13,3 +13,8 @@ img.avatar.large { padding: 10px; background: white; -moz-transform: rotate(1deg
 
 #profile-image { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; float: left; height: 100%; margin-right: 20px; }
 #profile-image { *display: inline; }
+
+form.login { margin: 150px auto; width: 450px; border: 1px solid lightGrey; padding-top: 20px; overflow: hidden; border-radius: 20px; box-shadow: 0 0 10px #aaaaaa; }
+form.login .actions { margin-bottom: 0; }
+
+.content.logout { width: 700px; }

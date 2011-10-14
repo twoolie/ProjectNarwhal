@@ -118,6 +118,7 @@ INSTALLED_APPS = (
     'taggit',
     'annoying',
     'haystack',
+    'bootstrap',
     'registration',
     'sentry.client',
     'debug_toolbar',
