@@ -14,3 +14,8 @@ def torrent_list(request):
     
     return {'latest_table': latest_table,
             'most_table': most_table }
+
+@render_to("torrent/torrent.html")
+def torrent(request, slug):
+    torrent = Torrent.objects.select_related(depth=4).get(slug=slug)
+    return {'torrent': torrent }

@@ -5,4 +5,5 @@ import views
 
 urlpatterns = patterns('',
         url(r'^$', views.torrent_list, name='index'),
+        url(r'^t/([\w-]+)$', views.torrent, name='index'),
     )
