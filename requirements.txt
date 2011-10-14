@@ -6,7 +6,7 @@ path.py # generic FS path manipulation library
 markdown # Markdown your text fields
 python-irclib # library for builing IRC bots
 # Whoosh # only needed in debug
-py-yaml # needed for loading fixtures
+pyyaml # needed for loading fixtures
 
 # Django Libs
 Django>=1.3

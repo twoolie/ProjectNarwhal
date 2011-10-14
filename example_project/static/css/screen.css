@@ -25,7 +25,7 @@ h1 { border-bottom: 1px solid darkgrey; }
 header.jumbotron { display: block; height: 140px; width: 100%; max-width: none; margin: 0; margin-bottom: 30px; text-align: center; background: url("/static/img/bg.png"); border-bottom: 1px solid grey; }
 header.jumbotron #branding { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; }
 header.jumbotron #branding { *display: inline; }
-header.jumbotron #branding img { float: left; }
+header.jumbotron #branding img { float: left; margin-top: 5px; }
 header.jumbotron #branding span { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; color: white; font-size: 60px; margin: 45px 0 0 20px; text-shadow: 0 0 2px #333333, 0 3px 7px #333333; font-family: "Leckerli One", cursive; }
 header.jumbotron #branding span { *display: inline; }
 header.jumbotron #branding p { margin-top: 20px; color: #333333; text-shadow: 0 1px 0px #eeeeee; }
