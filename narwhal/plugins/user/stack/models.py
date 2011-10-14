@@ -32,3 +32,4 @@ class Stack(Model):
     
     def __unicode__(self):
         return u'%s (%s)' % (self.title, self.subtitle)
+

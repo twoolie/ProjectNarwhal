@@ -34,3 +34,4 @@ class Watched(Video):
     
     def __unicode__(self):
         return u'[%s] %s' % (self.torrent.title, self.get_status_for_display())
+
