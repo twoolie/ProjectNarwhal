@@ -1,19 +1,33 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}{{user.username}}{{block.super}}{%endblock%}
 
 {% block content %}
-  <div id="profile-image">{% include "profile/avatar.html" with size="large" %}</div>
-  <h1> {{user.username}} </h1>
-  
-  {% if not user.profile.data %}<p> No plugins have contributed data on this user </p>{% endif %}
-  
-  {% for infogroup in user.profile.data %}
-  <table>
-    <caption> infogroup </caption>
-    {%for datapoint in infogroup.items %}
-    <tr><td>{{ datapoint.0 }}</td><td>{{ datapoint.1|default:"" }}</td></tr>
-    {% endfor %}
-  </table>
-  {% endfor %}
+	<div id="profile-image">{% include "profile/avatar.html" with size="large" %}</div>
+		<h1> {{user.username}} </h1>
+		{% if not user.profile.data %}<p>
+			{% trans "No plugins have contributed data on this user." %}
+		</p>{% endif %}
+	{% for infogroup in user.profile.data %}
+		<table>
+			<caption> infogroup </caption>
+		{%for datapoint in infogroup.items %}
+			<tr><td>{{ datapoint.0 }}</td><td>{{ datapoint.1|default:"" }}</td></tr>
+		{% endfor %}
+		</table>
+	{% endfor %}
+	</div>
 {% endblock content %}
+
+{% block sidebar %}
+{% if "messages" in settings.INSTALLED_APPS %}
+	<h3> Messages </h3>
+	<ul class="subnavilist">
+		<li><a href="{% url messages_inbox %} ">&raquo; {% trans "Inbox" %}</a></li>
+		<li><a href="{% url messages_outbox %} ">&raquo; {% trans "Sent Messages" %}</a></li>
+		<li><a href="{% url messages_compose %} ">&raquo; {% trans "New Message" %}</a></li>
+		<li><a href="{% url messages_trash %} ">&raquo; {% trans "Trash" %}</a></li>
+	</ul>
+{% endif %}
+{% endblock sidebar %}

@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from narwhal.core.torrent.models import Category
 from narwhal.plugins.video.models import Video
 
+from annoying.functions import get_object_or_None
 import conf
 
 class Series(Video):
@@ -13,7 +14,7 @@ class Series(Video):
     PENDING = 1; RUNNING = 2; ENDED = 3; HIATUS = 4
     STATUS_CHOICES = ((PENDING,_('Pending')), (RUNNING,_('Running')), (ENDED,_('Ended')), (HIATUS,_('Hiatus')))
     
-    category     = ForeignKey(Category, verbose_name=_('Category'), default=lambda: Category.objects.get(title=conf.CATEGORY_NAME))
+    category     = ForeignKey(Category, verbose_name=_('Category'), default=lambda: get_object_or_None(Category, title=conf.CATEGORY_NAME))
     description  = TextField(_('Description'), blank=True)
     
     status       = SmallIntegerField(_('Status'), max_length=1, choices=STATUS_CHOICES, default=RUNNING)

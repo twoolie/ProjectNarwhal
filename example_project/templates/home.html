@@ -1,9 +1,30 @@
 {% extends "base.html" %}
+{% load cache %}
 
 {%block title%} Home {%endblock%}
 
 {%block content%}
-  <h1> Welcome to {{settings.SITE_NAME}} </h1>
+
+  <h1> Welcome to ProjectNarwhal, the open source torrent tracker. </h1>
   
-  <p> Have a look around and explore all that we can do for you. </p>
+  <p> This is the home page and lives at <code>example_project/templates/home.html</code>
+      All templates provided by project narwhal can be overridded by placing suitably named
+      templates into your project's templates directory. Feel Free to overide the base theme
+      With your own by replacing screen.css in <code>example_project/static/</code></p>
+  
+  <p> ProjectNarwhal has been designed to be fully modular. most modules are enabled by
+      default, but you can change these settings in <code>example_project/settings/base.py</code>.
+      place any host-specific settings in <code>settings/[hostname].py</code>.
+      And don't forget to change <code>SITE_NAME</code> to the name of your site.</p>
+
+{% cache 30 latest-torrents LANGUAGE_CODE%} {#vary cache on language code #}
+  <h1> Latest Torrents </h1>
+  {% include "torrent/table.html" with table=latest_table request=request only %}
+{% endcache %}
+
+{% cache 601 most-torrents LANGUAGE_CODE %}
+  <h1> Most Downloaded Torrents </h1>
+  {% include "torrent/table.html" with table=most_table request=request only %}
+{% endcache %}
+
 {%endblock content %}

@@ -28,7 +28,7 @@ class Watched(Video):
                 stack.public_add = False
                 stack.owner = user
                 stack.description = _('The personal watchlist stack for %(username)s.') % \
-                                        {'username': user.username}
+                                        {'username': user.username }
             elif not user:
                 raise AttributeError("Need a user to create a stack")
     

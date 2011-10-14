@@ -5,36 +5,51 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>{% block title %}{% endblock %} | {{settings.SITE_NAME}}</title>
     <link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.png">
+    <link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.min.css" media="screen, projection" type="text/css" />
     <link rel="stylesheet" href="{{STATIC_URL}}css/screen.css" media="screen, projection" type="text/css" />
     <link rel="stylesheet" href="{{STATIC_URL}}css/profile.css" media="screen, projection" type="text/css" />
     <!--[if IE]><link href="{{STATIC_URL}}css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->
     {% block css %}{%endblock%}
     <script type="text/javascript" src="{{STATIC_URL}}js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/bootstrap-modal.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/bootstrap-twipsy.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/bootstrap-popover.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/narwhal-profile.js"></script>
     {% block js %}{%endblock%}
   </head>
   <body>{% block body %}
-    <div id="header">
-      <div id="branding">
-        <img src="{{STATIC_URL}}img/logo.png">
-        <span>{{settings.SITE_NAME}}</span>
-      </div>
-      <div id="usertools">
-        {% if request.user.is_authenticated %}
-          {% include "profile/avatar.html" with user=request.user size="small" %}
-          <a href="{{ request.user.get_absolute_url }}" class="username">{{ request.user.username }}</a> |
-          <a href="{% url messages_inbox %}" class="messgaes unread">{% inbox_count %}</a>
-          {% if user.is_staff %}| <a href="/admin/">Administration</a>{% endif %}
-        {% else %}
-          <a href="{#{% url login %}#}">login</a>
-        {% endif %}
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="{% url home %}">
+            <img src="{{STATIC_URL}}img/logo-small.png">{{settings.SITE_NAME}}</a>
+          <ul class="nav">
+            <li><a href="{% url torrent:index %}">All Torrents</a></li>
+            <li><a href="/forum">Forum</a></li>
+            <li><a href="/500">500</a></li>
+            {#<li><a href="#">Layouts</a></li>#}
+            {#<li><a href="#">Type</a></li>#}
+          </ul>
+          <div id="usertools" class="pull-right">
+            {% if request.user.is_authenticated %}
+              {% include "profile/avatar.html" with user=request.user size="small" %}
+              <a href="{{ request.user.get_absolute_url }}" class="username">{{ request.user.username }}</a> |
+              <a href="{% url messages_inbox %}" class="messgaes unread">{% inbox_count %}</a>
+              {% if user.is_staff %}| <a href="/admin/">Administration</a>{% endif %}
+              {% url logout %}
+            {% else %}
+              <a href="{% url login %}">login</a>
+            {% endif %}
+          </div>
+        </div>
       </div>
     </div>
-    <nav id="main_nav">
-      <a class="home" href="/">Home
-      <a class="torrents" href="{% url torrent:index %}">Browse Torrents</a>
-      <a class="forum" href="/forum">Forum</a>
-      <a class="500" href="/500">500</a>
-    </nav>
+    <header id="header" class="jumbotron">
+      <div id="branding">
+        <img src="{{STATIC_URL}}img/logo-large.png">
+        <span>{{settings.SITE_NAME}}</span>
+      </div>
+    </header>
     {% block pre-content %}{% endblock %}
     <aside id="sidebar">
       {% block sidebar %}{%endblock%}
@@ -46,6 +61,7 @@
     <div id="footer">
       <p class='badges'><img src="http://media.djangopony.com/img/small/badge.png"></p>
       <p class='modules'>Built using Django=={{versions.django}} | ProjectNarwhal=={{versions.narwhal}} | Django-piston=={{versions.piston}}</p>
+      <p><a href="http://www.axialis.com/free/icons">Icons</a> by <a href="http://www.axialis.com">Axialis Team</a></p>
     </div>{% endblock body %}
   </body>
 </html>

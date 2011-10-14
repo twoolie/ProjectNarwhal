@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from hashlib import sha1
-
 from django.db.models import *
 from django.utils.encoding import smart_unicode
 from django.utils.translation import ugettext_lazy as _
@@ -10,6 +8,7 @@ from django.core.cache import cache
 
 from treebeard.mp_tree import MP_Node
 from annoying.fields import JSONField
+from taggit.managers import TaggableManager
 
 class Category(MP_Node):
     """Categories for Torrents"""
@@ -35,6 +34,8 @@ class Category(MP_Node):
 
 class Torrent(Model):
     class Meta:
+        ordering = ('-added',)
+        app_label = 'torrent'
         verbose_name =_('torrent')
         verbose_name_plural =_('torrents')
 
@@ -44,7 +45,6 @@ class Torrent(Model):
     user = ForeignKey('auth.User', blank=True, null=True, verbose_name=_('Author'))
     image = ImageField(_('Image'), upload_to='img/torrents', blank=True, null=True)
     description = TextField(_('Description'))
-    html = TextField(editable=False, blank=True)
     added = DateTimeField(_('Added'), auto_now_add=True, editable=False)
     
     torrent = FileField(upload_to='torrent/')
@@ -54,9 +54,12 @@ class Torrent(Model):
     leechers = PositiveIntegerField(editable=False, default=0)
     downloaded = PositiveIntegerField(editable=False, default=0)
     comments_enabled = BooleanField(_('comments enabled'), default=True)
-
+    
+    tags = TaggableManager()
+    
     def single_file(self):
         return 'length' in self.data['info'].keys()
+    single_file.boolean = True
 
     def files(self):
         if self.single_file():

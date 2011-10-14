@@ -11,12 +11,11 @@ from sorl.thumbnail import ImageField
 
 class Profile(Model):
     user = AutoOneToOneField(User, related_name='profile')
+    key = CharField(max_length=32, default=lambda: md5(os.urandom(40)).hexdigest())
     
     avatar = ImageField(upload_to='profiles/avatar/', blank=True, null=True)
-    
-    key = CharField(max_length=32, default=lambda: md5(os.urandom(40)).hexdigest())
-    downloaded = PositiveIntegerField(default=0)
-    uploaded = PositiveIntegerField(default=0)
+    uploaded = BigIntegerField(default=0)
+    downloaded = BigIntegerField(default=0)
     
     # extra_data should only be used for data that should not be 
     # searched upon, such as chat protocol addresses

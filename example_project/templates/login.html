@@ -1,13 +1,7 @@
-{% load base %}
+{% extends "base.html" %}
 
-{% block title %}Login{% endblock %}</title>
+{% block content %}
 
-{% block body %}
-  <img id="logo" src="{{STATIC_URL}}img/logo.png">
-  <div id="login">
-    <h2>Login to {{settings.SITE_NAME}}</h2>
-    <form action="." method="POST">
-      <table>{{ login_form.as_table }}</table>
-    </form>
-  </div>
-{% endblock body %}
+{% include "profile/_login.html" %}
+
+{% endblock %}

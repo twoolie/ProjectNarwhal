@@ -125,6 +125,7 @@ def scrape(request):
         
     except MultiValueDictKeyError:
         hashes = request.GET.getlist('info_hash', None)
+        #cached = cache.get_many(['tracker-scrape-byhash-'+hash for hash in hashes]) #optimise this later
         files = Torrent.objects.filter(info_hash__in=hashes)[:settings.TRACKER_MAX_MULTI_SCRAPE]\
             .values('info_hash', 'seeders', 'leechers', 'downloaded')
         files = list({'info_hash':t['info_hash'], 'complete': t['seeders'], 

@@ -7,33 +7,40 @@
 @import "compass/css3/inline-block"
 @import "compass/css3/border-radius"
 
-@import url(http://fonts.googleapis.com/css?family=Leckerli+One)
-@import url(http://fonts.googleapis.com/css?family=Sansita+One)
+@import url("http://fonts.googleapis.com/css?family=Leckerli+One")
+@import url("http://fonts.googleapis.com/css?family=Sansita+One")
 
 html
-	font-family: sans-serif
-	padding: 0
-	min-height: 100%
-	/* in case browser does not understand multi-backgound *cough* IE *cough*
+	/*font-family: sans-serif
+	 *padding: 0
+	 *min-height: 100%
+	 */* in case browser does not understand multi-backgound *cough* IE *cough*
 	background: url("#{$static-url}img/bg.png") 
 	background: url("#{$static-url}img/bg_top.png") repeat-x scroll top, url("#{$static-url}img/bg.png") repeat scroll
 
 body
 	padding: 0 20px
 	margin: 0 auto
+	background-color: nonr
 	max-width: 1200px
 	min-width: 900px
-	min-height: 100px
+/*	min-height: 100px
 
 h1, h2, h3, h4, h5, h6
 	font-family: 'Sansita One', helvetica
 h1
 	border-bottom: 1px solid darkgrey
 
-#header
+.topbar .brand
+	font-family: "Leckerli One"
+	img
+		margin: -15px  10px -15px 0
+
+header.jumbotron
 	display: block
 	padding: 0px 10px
 	height: 140px
+	margin-top: 40px
 	margin-bottom: 30px
 	#branding
 		+inline-block
@@ -47,25 +54,22 @@ h1
 			text-shadow: 0 0 2px #333, 0 3px 7px #333
 			font-family: 'Leckerli One', cursive
 
-	#usertools
-		color: white !important
-		+inline-block
-		float: right
-		right: 0
-		padding: 10px 5px
-		background-color: rgba(0,0,0,0.5)
-		+border-radius( 0 0 5px 5px )
-		+box-shadow( 0 2px 4px rgba(0,0,0,0.4) )
-		.avatar
-			float: left
-			margin:
-				top: -5px
-				right: 5px
-				bottom: -5px
-		a, a:visited
-			color: white
-		a:hover
-			color: #DDD
+#usertools
+	color: white !important
+	+inline-block
+	float: right
+	right: 0
+	padding: 10px 5px
+	.avatar
+		float: left
+		margin:
+			top: -5px
+			right: 5px
+			bottom: -5px
+	a, a:visited
+		color: white
+	a:hover
+		color: #DDD
 
 #main_nav
 	float: right
@@ -110,10 +114,11 @@ h1
 	width: 100%
 	max-width: none
 	text-align: center
-	.badges
-		padding: 0
-		margin: 0
-		border: 0
-	.modules
+	p
 		font-size: 10px
-		color: darkgrey
+		color: darkgrey !important
+		margin: 3px 0
+	img.badges
+		padding: 0
+		margin: 0 5px
+		border: 0

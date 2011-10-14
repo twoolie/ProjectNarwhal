@@ -11,9 +11,14 @@ if 'haystack' in settings.INSTALLED_APPS:
 if 'django.contrib.admin' in settings.INSTALLED_APPS:
     from django.contrib import admin; admin.autodiscover()
 
+from narwhal.core.profile.forms import LoginForm
+
 handler500 = lambda request: HttpResponseServerError(loader.get_template('500.html').render(RequestContext(request)))
 
 urlpatterns = patterns('', 
+        url(r'^login', 'django.contrib.auth.views.login', {'template_name':'login.html', 'authentication_form': LoginForm}, name='login'),
+        url(r'^logout', 'django.contrib.auth.views.logout', {'template':'logout.html'}, name='logout'),
+        
         url(r'^admin/', include(admin.site.urls)),
         
         url(r'^$', direct_to_template, {'template':'home.html'}, name='home'),

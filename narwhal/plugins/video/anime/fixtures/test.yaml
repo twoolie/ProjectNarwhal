@@ -1,0 +1,9 @@
+- model: anime.Anime
+  fields:
+    category: ['Anime']
+    title: "Macross Zero Complete"
+    slug: "macross-zero-complete"
+    user: ['testuser']
+    description: "Complete collection of macross zero episodes"
+    html: "Complete description of macross zero episodes"
+    torrent = "narwhal/plugins/video/anime/fixtures/MacrossZero.torrent"

@@ -75,6 +75,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     #'djangobb_forum.middleware.LastLoginMiddleware',
     #'djangobb_forum.middleware.UsersOnline',
+    'django_authopenid.middleware.OpenIDMiddleware',
     'narwhal.core.profile.middleware.UserState',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
@@ -89,7 +90,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'narwhal.context_processors.settings',
     'narwhal.context_processors.versions',
     'messages.context_processors.inbox',
-    #'django_authopenid.context_processors.authopenid',
+    'django_authopenid.context_processors.authopenid',
     #'djangobb_forum.context_processors.forum_settings',
 )
 
@@ -113,12 +114,16 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     
     #libs
-    'annoying',
-    'sorl.thumbnail',
-    'haystack',
     'south',
+    'taggit',
+    'annoying',
+    'haystack',
+    'registration',
     'sentry.client',
     'debug_toolbar',
+    'sorl.thumbnail',
+    'django_tables2',
+    'django_authopenid',
     
     #apps
     'sentry',
@@ -140,7 +145,13 @@ INSTALLED_APPS = (
     #djangobb_forum
 )
 
+LOGIN_REDIRECT_URL = "/"
+
 INTERNAL_IPS = ('127.0.0.1',)
+if 'debug_toolbar' in INSTALLED_APPS:
+    DEBUG_TOOLBAR_CONFIG = {
+        'INTERCEPT_REDIRECTS': False,
+    }
 
 AUTH_PROFILE_MODULE = 'profile.Profile'
 

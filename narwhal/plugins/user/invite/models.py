@@ -9,3 +9,4 @@ class Invite(Model):
     invitee = OneToOneField('auth.User', null=True, blank=True, verbose_name=_('invitee'), related_name='invited_by')
     email_address = CharField(_('email address'), max_length='100')
     code = CharField(_('invite_code'), max_length=32, default=lambda: md5(os.urandom(32)).hexdigest())
+    

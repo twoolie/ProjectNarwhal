@@ -22,5 +22,5 @@ class TorrentIndex(RealTimeSearchIndex):
         num_comments = IntegerField()
         def prepare_num_comments(self, obj):
             return obj.comments.all().count()
-    
+
 site.register(models.Torrent, TorrentIndex)

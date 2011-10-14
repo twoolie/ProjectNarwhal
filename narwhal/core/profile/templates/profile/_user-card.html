@@ -1,0 +1,26 @@
+{%load cache i18n torrent %}{% cache 30 user-card user.username is_me %}{% spaceless %}
+{% with profile=user.get_profile %}
+<div class="user-card">
+  <table class="zebra-striped">
+    <tbody>
+      <tr>
+        <td><b>{% trans "Member Since" %}</b></td>
+        <td>{{ user.date_joined }}</td>
+      </tr>
+      {% if "narwhal.plugins.user.reputation" in settings.INSTALLED_APPS %}<tr>
+        <td><b>{% trans "Reputation" %}</b></td>
+        <td>{{ profile.reputation }}</td>
+      </tr>{% endif %}
+      <tr>
+        <td><b>{% trans "Up/Down Stats" %}</b></td>
+        <td><img src="{{STATIC_URL}}img/icons/16x16/arrow1-up.png">{{ profile.uploaded|bytes }} 
+            <img src="{{STATIC_URL}}img/icons/16x16/arrow1-down.png">{{ profile.downloaded|bytes }} </td>
+      </tr>
+      {% if is_me and "narwhal.plugins.user.invite" in settings.INSTALLED_APPS %}<tr>
+        <td><b>{% trans "Invites Remaining" %}</b></td>
+        <td>{{profile.data.invites.remaining}}<td>
+      </tr>{% endif %}
+    </tbody>
+  </table>
+</div>
+{% endwith %}{% endspaceless %}{% endcache %}

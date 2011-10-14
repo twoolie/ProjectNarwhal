@@ -1,4 +1,4 @@
-{% load cache profile%}{% cache 10 user size %}{% spaceless %}
+{% load cache profile%}{% cache 10 avatar user size %}{% spaceless %}
 {# this template snippet takes a param called user and a param called size #}
 <a href="{{user|profilelink}}">
 {% if size == "small" %}{% with pxsize=settings.PROFILE_AVATAR_SIZE_SMALL %}{% include "profile/_avatar.html" %}{%endwith%}{%endif%}

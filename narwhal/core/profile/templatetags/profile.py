@@ -26,7 +26,6 @@ def active(user, state=None):
         id = user.user_id
     if isinstance(user, User):
         id = user.id
-        print id
     if id:
         #get both keys at once to avoid 2 cache round trips
         #res = cache.get_many(USER_TRACK_ACTIVE_KEY % id, USER_TRACK_IDLE_KEY % id)

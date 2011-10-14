@@ -23,8 +23,8 @@ def bootstap_dev():
         local('virtualenv --distribute .')
         with prefix('Scripts\\activate.bat' if platform.system()=="Windows" else 'source bin/activate'):
             local('pip install -r requirements.txt')
-            local(join('python %(project)s','manage.py syncdb') % env)
-            local(join('python %(project)s','manage.py migrate') % env)
+            local(join('python %(project)s','manage.py syncdb --all') % env)
+            local(join('python %(project)s','manage.py migrate --fake') % env)
 
 @task
 def bootstrap(hostname, path=env.web_path, **kwargs):
