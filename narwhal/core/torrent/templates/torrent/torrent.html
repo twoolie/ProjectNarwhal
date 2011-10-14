@@ -1,4 +1,4 @@
-{%extends "torrent.search.html" %}
+{% extends "torrent.search.html" %}{% load markup %}
 
 {% block title %} {{torrent.title}} | {{torrent.category.title}} | {{block.super}} {% endblock %}
 
@@ -22,5 +22,7 @@
 <h1> {{torrent.title}} </h1>
 
 <h2> Torrent Info </h2>
+
+<p class="description">{{ torrent.description|markdown:"footnotes" }} </p>
 
 {% endblock content %}

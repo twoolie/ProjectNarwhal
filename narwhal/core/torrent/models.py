@@ -89,7 +89,7 @@ class Torrent(Model):
         #extra validation performed by subclasses
 
     def save(self, **kwargs):
-        from markdown import Markdown
-        md = Markdown(extensions=['footnotes'], safe_mode=True)
-        self.html = md.convert(self.text)
+        #from markdown import Markdown
+        #md = Markdown(extensions=['footnotes'], safe_mode=True)
+        #self.html = md.convert(self.text)
         super(Torrent, self).save(**kwargs)

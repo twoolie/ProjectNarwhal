@@ -15,6 +15,7 @@ sorl-thumbnail # Fantastic thumbnailing library
 django-annoying # takes the annoying parts out of django
 django-boss # fixes django's retarded optparse reliance
 git+https://github.com/twoolie/django-bootstrap.git@patch-1#egg=django-bootstrap
+django-haystack # Advanced Full-text search
 
 #   dev tools/utils
 django-debug-toolbar # shows debug information on side of page for developers
