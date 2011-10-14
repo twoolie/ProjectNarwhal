@@ -1,0 +1,3 @@
+# INSERT THESE LINES INTO YOUR CRON SCRIPT.
+
+@daily     %(path)s/%(hostname)s/%(project)s/manage.py cleanup
