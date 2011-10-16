@@ -4,6 +4,7 @@ from django.db.models import *
 from django.utils.encoding import smart_unicode
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
+from django.template.defaultfilters import slugify
 from django.core.cache import cache
 
 from treebeard.mp_tree import MP_Node
@@ -48,7 +49,7 @@ class Torrent(Model):
     added = DateTimeField(_('Added'), auto_now_add=True, editable=False)
     
     torrent = FileField(upload_to='torrent/')
-    data = JSONField(editable=False)
+    data = JSONField(editable=False, default=lambda: {})
     info_hash = CharField(_('Info hash'), unique=True, max_length=40, db_index=True, editable=False)
     seeders = PositiveIntegerField(editable=False, default=0)
     leechers = PositiveIntegerField(editable=False, default=0)
@@ -92,4 +93,6 @@ class Torrent(Model):
         #from markdown import Markdown
         #md = Markdown(extensions=['footnotes'], safe_mode=True)
         #self.html = md.convert(self.text)
+        if not self.slug:
+            self.slug = slugify(self.title)[:self._meta.get_field_by_name('slug')[0].max_length]
         super(Torrent, self).save(**kwargs)
