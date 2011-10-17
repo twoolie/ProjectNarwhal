@@ -6,9 +6,9 @@
     <style>
       @import url("http://fonts.googleapis.com/css?family=Leckerli+One");
       @import url("http://fonts.googleapis.com/css?family=Sansita+One");
-      html { background: url("/static/img/bg_middle.png") repeat scroll; }
+      html { background: url("{{STATIC_URL}}img/bg_middle.png") repeat scroll; }
       .error500 { width:570px; height:570px; text-align: center; border-radius: 10px; 
-                      background-color: rgba(0,0,0,0.4); margin: 50px auto; color: white;
+                      background: url("{{STATIC_URL}}img/waves.png") repeat-x bottom, rgba(0,0,0,0.4); margin: 50px auto; color: white;
                       box-shadow: 3px 3px 5px rgba(0,0,0,0.5) inset, -3px -3px 5px rgba(255,255,255,0.5) inset;}
       .error500 h1 { font-size: 36px; font-family: 'Leckerli One', cursive, sans; padding-top:20px;}
       .error500 h2, p { font-family: 'Sansita One', cursive, sans; }
