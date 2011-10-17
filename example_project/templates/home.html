@@ -21,18 +21,95 @@
 {% block content-class %}home{% endblock %}
 {% block content %}
 
-  <h1> Welcome to ProjectNarwhal <small>the open source torrent tracker.</small> </h1>
-  
+  <h1> Welcome to ProjectNarwhal (Preview) <small>the open source torrent tracker.</small> </h1>
   <p> This is the home page and lives at <code>example_project/templates/home.html</code>
       All templates provided by project narwhal can be overridded by placing suitably named
       templates into your project's templates directory. Feel Free to overide the base theme
       With your own by replacing screen.css in <code>example_project/static/</code></p>
-  
   <p> ProjectNarwhal has been designed to be fully modular. most modules are enabled by
       default, but you can change these settings in <code>example_project/settings/base.py</code>.
       place any host-specific settings in <code>settings/[hostname].py</code>.
       And don't forget to change <code>SITE_NAME</code> to the name of your site.</p>
+  
+  <h2> narwhal.core.profile <small>Extensible profile support</small> </h2>
+  
+  <h3> Default settings </h3>
+  <pre>
+PROFILE_AVATAR_PROTECT     = True # when set to true, this fetches a copy of all external avatars to the server locally so external observers cannot snoop your HTTP_REFERER
+PROFILE_AVATAR_SIZE_SMALL  = 30 # px
+PROFILE_AVATAR_SIZE_MEDIUM = 94 # px
+PROFILE_AVATAR_SIZE_LARGE  = 200 # px
+PROFILE_GRAVATAR_STANDIN   = 'mm' #can be one of the options from http://en.gravatar.com/site/implement/images/
+PROFILE_ACTIVE_TIMEOUT     = 60   #seconds
+PROFILE_IDLE_TIMEOUT       = 300  #seconds</pre>
 
+  <p> PLACE DOCS FOR PROFILE HERE </p>
+  
+  <h2> narwhal.core.torrent <small>Base classes for administering, indexing, searching.</small> </h2>
+  <p> The torrent module holds registration information for torrents tracked by narwhal along
+      with metadata and search indexes maintained by haystack.</p>
+
+  <h2> narwhal.core.tracker <small> Tracker backend.</small> </h2>
+  
+  <h3> narwhal.core.tracker.backends.django </h3>
+  <p> A pure-python/django tracker implementation that employs aggressive caching to support
+      large numbers of clients and real-time statistics gathering. This is the only 
+      officially-supported tracker backend due to the difficulties in maintaining a backend
+      for all possible trackers. </p>
+  
+  <h3> narwhal.core.tracker.backends.xbtt </h3>
+  <p> A django model API wrapper around xbtt that enables administration of XBTT's settings,
+      import of xbtt tracked torrents into the django backend, and (unsupported) ability to
+      use xbtt as the tracker backend for narwhal. </p>
+  
+  <h2> narwhal.plugins 
+       <small> Very thin wrapper code around the narwhal plugin packages. </home> </h2>
+  
+  <h3> narwhal.plugins.user </h3>
+  
+  <h4> narwhal.plugins.user.invite </h4>
+  <p> Plugin that allows people to invite their friends. Configurable criteria for giving
+      out invites for users. Tracking of which users invited which users. <p>
+  
+  <h4> narwhal.plugins.user.ban <small> optional: invite </small></h4>
+  <p> Plugin that provides the ability to ban users from accessing the site,
+      eithertemporarily or permanantly. Integrates with <code>narwhal.plugins.user.invite</code>
+      to ban the original inviting user.</code>
+  
+  <h4> narwhal.plugins.user.reputation </h4>
+  <p> Allows users to earn reputation for torrent uploads and other enabled actions on the site. </p>
+  
+  <h4> narwhal.plugins.user.bounty <small> requires: reputation</small></h4>
+  <p> Allows users to put up a chunk of their own hard-earned reputation to request specific
+      content. Other users can pool their reputation into the bounty to increase the reward.
+      The user that fulfills the bounty by popular vote receives the reputation pool. </p>
+  
+  <h4> narwhal.plugins.user.report </h4>
+  <p> Adds report buttons to the website which allow users to flag items as inappropriate/against
+      the rules. </p>
+  
+  <h4> narwhal.plugins.user.stack </h4>
+  <p> Provides a way of grouping content together. Public stacks can be used to maintain lists 
+      of all content belonging to a specific franchise. Alternately private stacks can be used
+      to group stacks of related content. </p>
+  
+  <h4> narwhal.plugins.user.watched <small> requires: stack </small> </h4>
+  <p> Provides watched/unwatched facilities for users by grouping content into a special stack
+      along with watched state markers. </p>
+  
+  <h3> narwhal.plugins.video </h3>
+  <p> Plugins providing video metadata </p>
+  
+  <h4> narwhal.plugins.video.movie </h4>
+  
+  <h4> narwhal.plugins.video.tv </h4>
+  
+  <h4> narwhal.plugins.video.anime <small> requires: tv </small> </h4>
+  
+  <h3> narwhal.plugins.irc.bot <h3>
+  
+  <h3> narwhal.plugins.book <h3>
+  
 {% cache 30 latest-torrents LANGUAGE_CODE %} {#vary cache on language code #}
   <h1> Latest Torrents </h1>
   {% include "torrent/table.html" with table=latest_table request=request only %}
