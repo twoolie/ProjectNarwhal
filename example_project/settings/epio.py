@@ -1,4 +1,4 @@
-from base import *
+from .base import *
 from bundle_config import config #Epio provided config
 
 

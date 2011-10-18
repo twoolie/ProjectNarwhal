@@ -1,0 +1,4 @@
+{% load markitup_tags %}
+{{ object.title }} {{ object.slug }}
+{{ object.description|render_markup }}
+{% for file in object.files %}{{ file }} {% endfor %}

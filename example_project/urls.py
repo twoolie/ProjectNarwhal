@@ -25,6 +25,7 @@ urlpatterns = patterns('',
         url(r'^tracker/', include('narwhal.core.tracker.urls', namespace='tracker')),
         url(r'^torrents/', include('narwhal.core.torrent.urls', namespace='torrent')),
         url(r'^profile/', include('narwhal.core.profile.urls', namespace='profile')),
+        url(r'^account/', include('django_authopenid.urls')),
         
         url(r'^500', handler500, name='500'),
         url(r'^404', handler404, name='404'),

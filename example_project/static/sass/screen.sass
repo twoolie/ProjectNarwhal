@@ -11,22 +11,46 @@
 @import url("http://fonts.googleapis.com/css?family=Leckerli+One")
 @import url("http://fonts.googleapis.com/css?family=Sansita+One")
 
+/* LAYOUT STYLES */
 body
 	margin-top: 40px
 	width: 100%
 body 
 	& > .container, & > .container-fluid
 		padding: 0 20px
-/*		margin: 0 auto
 		background-color: transparent
 		max-width: 1200px
-/*	min-height: 100px
+	
+	::-webkit-scrollbar
+		width: 6px
+		height: 6px
+	::-webkit-scrollbar-track
+		&:vertical
+			border-left: 1px solid lightgrey
+		&:horizontal
+			border-top: 1px solid lightgrey
+		/*+box-shadow( 0 0 2px transparentize(black, 0.7) inset )
+	::-webkit-scrollbar-thumb
+		border: 1px transparent
+		background: transparentize(black, 0.6)
+		+border-radius( 10px )
+		+box-shadow(0 0 2px transparentize(white, 0.6) inset )
 
-h1, h2, h3, h4, h5, h6
-	font-family: 'Sansita One', helvetica
+/* GLOBAL STYLES */
 h1
+	font-family: 'Sansita One', helvetica
 	border-bottom: 1px solid darkgrey
 
+pre
+	white-space: pre !important
+	word-wrap: normal !important
+	overflow: auto
+	max-height: 300px
+	margin: 0 20px 13px
+	+box-shadow( 0 0 3px transparentize(black, 0.8) inset)
+
+.popover
+	z-index: 20000
 .hidden
 	display: none
 
@@ -35,6 +59,7 @@ h1
 	img
 		margin: -15px 10px -15px 0
 
+/* PAGE STYLES */
 #usertools
 	color: white !important
 	+inline-block
@@ -62,6 +87,7 @@ header.jumbotron
 	text-align: center
 	background: url("#{$static-url}img/bg.png")
 	border-bottom: 1px solid grey
+	+box-shadow( 0 -1px 0 transparentize(white, 0.7) inset)
 	#branding
 		+inline-block
 		img
@@ -71,7 +97,7 @@ header.jumbotron
 			+inline-block
 			color: white
 			font-size: 60px
-			margin: 45px 0 0 20px
+			margin: 60px 0 0 20px
 			+text-shadow( 0 0 2px #333, 0 3px 7px #333)
 			font-family: 'Leckerli One', cursive
 		p

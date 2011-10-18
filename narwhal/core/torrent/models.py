@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from django.db.models import *
+from django.core.cache import cache
 from django.utils.encoding import smart_unicode
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.template.defaultfilters import slugify
-from django.core.cache import cache
 
 from treebeard.mp_tree import MP_Node
 from annoying.fields import JSONField
@@ -59,6 +59,7 @@ class Torrent(Model):
     tags = TaggableManager()
     
     def single_file(self):
+        print self.data
         return 'length' in self.data['info'].keys()
     single_file.boolean = True
 

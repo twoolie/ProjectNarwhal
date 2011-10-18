@@ -1,0 +1,7 @@
+{% load i18n %}
+
+<h1> {% blocktrans %}You have been invited to join {{ settings.SITE_NAME }} by {{ invite.user.inviter }}. {% endblocktrans %} </h1>
+
+<p> {% trans "To claim your membership, please follow the link below:" %} </p>
+
+<p> {% trans "Join:" %} <a href="{% url invite-landing %}&code={{ invite.code }}">{% url invite-landing %}&code={{ invite.code }}</a> </p>

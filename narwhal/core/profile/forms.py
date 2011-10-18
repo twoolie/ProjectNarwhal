@@ -1,10 +1,13 @@
 
 from django.forms import *
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from bootstrap.forms import BootstrapForm
+
+PASSWORD_MINIMUM_LENGTH = getattr(settings, "PASSWORD_MINIMUM_LENGTH", 8)
 
 class LoginForm(BootstrapForm):
     """
@@ -52,3 +55,29 @@ class LoginForm(BootstrapForm):
 
     def get_user(self):
         return self.user_cache
+
+class SignupForm(BootstrapForm):
+    username        = CharField(max_length=80)
+    password        = CharField(max_length=80)
+    password_repeat = CharField(max_length=80)
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if User.objects.filter(username__iexact=username).exists():
+            raise ValidationError(_('Username already in use. Please try another.'))
+
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        if password.length() < PASSWORD_MINIMUM_LENGTH:
+            raise ValidationError(_('Password to short. Must be at least %i digits long.')%PASSWORD_MINIMUM_LENGTH)
+        return password
+
+    def clean_password_repeat(self):
+        password = self.cleaned_data.get('password')
+        password_repeat = self.cleaned_data.get('password_repeat')
+        
+        if password and password != password_repeat:
+            raise ValidationError(_('Passwords do not match.'))
+        return password_repeat
+
+

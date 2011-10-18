@@ -1,32 +1,40 @@
 /* Gobal styles for default theme */
 @import url("http://fonts.googleapis.com/css?family=Leckerli+One");
 @import url("http://fonts.googleapis.com/css?family=Sansita+One");
+/* LAYOUT STYLES */
 body { margin-top: 40px; width: 100%; }
 
-body > .container, body > .container-fluid { padding: 0 20px; }
+body > .container, body > .container-fluid { padding: 0 20px; background-color: transparent; max-width: 1200px; }
+body ::-webkit-scrollbar { width: 6px; height: 6px; }
+body ::-webkit-scrollbar-track { /*+box-shadow( 0 0 2px transparentize(black, 0.7) inset ) */ }
+body ::-webkit-scrollbar-track:vertical { border-left: 1px solid lightgrey; }
+body ::-webkit-scrollbar-track:horizontal { border-top: 1px solid lightgrey; }
+body ::-webkit-scrollbar-thumb { border: 1px transparent; background: rgba(0, 0, 0, 0.4); -moz-border-radius: 10px; -webkit-border-radius: 10px; -o-border-radius: 10px; -ms-border-radius: 10px; -khtml-border-radius: 10px; border-radius: 10px; -moz-box-shadow: 0 0 2px rgba(255, 255, 255, 0.4) inset; -webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.4) inset; -o-box-shadow: 0 0 2px rgba(255, 255, 255, 0.4) inset; box-shadow: 0 0 2px rgba(255, 255, 255, 0.4) inset; }
 
-/*		margin: 0 auto background-color: transparent max-width: 1200px */
-/*	min-height: 100px */
-h1, h2, h3, h4, h5, h6 { font-family: "Sansita One", helvetica; }
+/* GLOBAL STYLES */
+h1 { font-family: "Sansita One", helvetica; border-bottom: 1px solid darkgrey; }
 
-h1 { border-bottom: 1px solid darkgrey; }
+pre { white-space: pre !important; word-wrap: normal !important; overflow: auto; max-height: 300px; margin: 0 20px 13px; -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2) inset; -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2) inset; -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2) inset; box-shadow: 0 0 3px rgba(0, 0, 0, 0.2) inset; }
+
+.popover { z-index: 20000; }
 
 .hidden { display: none; }
 
 .topbar .brand { font-family: "Leckerli One"; }
 .topbar .brand img { margin: -15px 10px -15px 0; }
 
+/* PAGE STYLES */
 #usertools { color: white !important; display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; float: right; right: 0; padding: 10px 5px; }
 #usertools { *display: inline; }
 #usertools .avatar { float: left; margin-top: -5px; margin-right: 5px; margin-bottom: -5px; }
 #usertools a, #usertools a:visited { color: white; }
 #usertools a:hover { color: #dddddd; }
 
-header.jumbotron { display: block; height: 140px; width: 100%; max-width: none; margin: 0; margin-bottom: 30px; text-align: center; background: url("/static/img/bg.png"); border-bottom: 1px solid grey; }
+header.jumbotron { display: block; height: 140px; width: 100%; max-width: none; margin: 0; margin-bottom: 30px; text-align: center; background: url("/static/img/bg.png"); border-bottom: 1px solid grey; -moz-box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3) inset; -webkit-box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3) inset; -o-box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3) inset; box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3) inset; }
 header.jumbotron #branding { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; }
 header.jumbotron #branding { *display: inline; }
 header.jumbotron #branding img { float: left; margin-top: 5px; }
-header.jumbotron #branding span { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; color: white; font-size: 60px; margin: 45px 0 0 20px; text-shadow: 0 0 2px #333333, 0 3px 7px #333333; font-family: "Leckerli One", cursive; }
+header.jumbotron #branding span { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; color: white; font-size: 60px; margin: 60px 0 0 20px; text-shadow: 0 0 2px #333333, 0 3px 7px #333333; font-family: "Leckerli One", cursive; }
 header.jumbotron #branding span { *display: inline; }
 header.jumbotron #branding p { margin-top: 20px; color: #333333; text-shadow: 0 1px 0px #eeeeee; }
 

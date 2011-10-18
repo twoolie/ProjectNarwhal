@@ -75,8 +75,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     #'djangobb_forum.middleware.LastLoginMiddleware',
     #'djangobb_forum.middleware.UsersOnline',
-    'django_authopenid.middleware.OpenIDMiddleware',
     'narwhal.core.profile.middleware.UserState',
+    #'django_authopenid.middleware.OpenIDMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
@@ -90,7 +90,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'narwhal.context_processors.settings',
     'narwhal.context_processors.versions',
     'messages.context_processors.inbox',
-    'django_authopenid.context_processors.authopenid',
+    #'django_authopenid.context_processors.authopenid',
     #'djangobb_forum.context_processors.forum_settings',
 )
 
@@ -118,13 +118,15 @@ INSTALLED_APPS = (
     'taggit',
     'annoying',
     'haystack',
+    'markitup',
+    'treebeard',
     'bootstrap',
     'registration',
     'sentry.client',
     'debug_toolbar',
     'sorl.thumbnail',
     'django_tables2',
-    'django_authopenid',
+    #'django_authopenid',
     
     #apps
     'sentry',
@@ -136,6 +138,8 @@ INSTALLED_APPS = (
     'narwhal.core.profile',
     
     #narwhal plugins
+    'narwhal.plugins.user.ban',
+    'narwhal.plugins.user.invite'
     'narwhal.plugins.irc.bot',
     'narwhal.plugins.book',
     'narwhal.plugins.video',
@@ -153,6 +157,12 @@ if 'debug_toolbar' in INSTALLED_APPS:
     DEBUG_TOOLBAR_CONFIG = {
         'INTERCEPT_REDIRECTS': False,
     }
+
+if 'markitup' in INSTALLED_APPS:
+    MARKITUP_FILTER = ('markdown.markdown', {
+                            'safe_mode': True,
+                            'toc': '',
+                        })
 
 AUTH_PROFILE_MODULE = 'profile.Profile'
 

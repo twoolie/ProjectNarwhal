@@ -1,6 +1,0 @@
-{{ object.title }}
-{{ object.data.info.name }}
-{{ object.text }}
-{% file for object.files %}
-{{ file.0 }}
-{% endfor %}

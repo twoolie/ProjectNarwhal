@@ -6,7 +6,14 @@
 
 <form id="search" action="." method="GET">
   <div id="search-box">
-    <input type="search" name="q" value="{{request.GET.q}}" placeholder="Search {{settings.SITE_NAME}}" autocomplete="off"><input type="submit" value="Search">
+    {% spaceless %}
+    <input type="search" name="q" value="{{request.GET.q}}" placeholder="Search {{settings.SITE_NAME}}" autocomplete="off">
+    <select name='category' >
+      <option>All Torrents</option>
+      <option value='anime'>Anime</option>
+    </select>
+    <input type="submit" value="Search">
+    {% endspaceless %}
   </div>
   <div id="pulldown">
     <div id="advanced">

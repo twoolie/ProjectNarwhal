@@ -1,4 +1,5 @@
 /.settings
+/build
 /Include
 /inc
 /Lib
@@ -7,6 +8,7 @@
 /bin
 /.project
 /.pydevproject
+/example_project/whoosh_index
 .sass-cache
 *.pyc
 *.pyo
